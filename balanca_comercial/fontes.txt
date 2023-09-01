@@ -1,0 +1,7 @@
+Importações - (FOB) (Antiga metod. - BPM5) - US$ - Banco Central do Brasil- Balanço de Pagamentos (BPM5) (BCB / BP (BPM5)) - BPN_MTV
+
+Exportações - (FOB) (Antiga metod. - BPM5) - US$ - Banco Central do Brasil, Balanço de Pagamentos (BPM5) (BCB / BP (BPM5)) - BPN_XTV	
+
+https://fred.stlouisfed.org/series/DPCERG3A086NBEA
+
+U.S. Bureau of Economic Analysis, Personal Consumption Expenditures: Chain-type Price Index [DPCERG3A086NBEA], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/DPCERG3A086NBEA, September 1, 2023.
