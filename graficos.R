@@ -11,6 +11,8 @@ df %>%
     geom_point() +
     labs(x = "Ano", y = "Inflação (% a.a.)")
 
+ggsave("graficos/inflacao.png", width = 9, height = 5, dpi = 600)
+
 #TRAJETÓRIA DA BALANÇA COMERCIAL
 df %>% 
   mutate(
@@ -37,6 +39,9 @@ df %>%
       fill = "Componente da BC"
     )
 
+ggsave("graficos/balanca.png", width = 9, height = 5, dpi = 600)
+
+
 #TRAJETÓRIA DO ÍNDICE DÍVIDA/PIB
 df %>% 
   filter(YEAR > 1970, YEAR < 1985) %>% 
@@ -48,6 +53,8 @@ df %>%
       x = "Ano", 
       y = "Dívida Externa / PIB (US$ deflacionado)"
     ) 
+
+ggsave("graficos/divida.png", width = 9, height = 5, dpi = 600)
 
 #BASE MONETÁRIA
 df %>% 
@@ -61,3 +68,5 @@ df %>%
       x = "Ano", 
       y = "Log da Base monetária (R$)"
     ) 
+
+ggsave("graficos/base_monetaria.png", width = 9, height = 5, dpi = 600)
