@@ -5,7 +5,7 @@ df <- read_csv("data.csv")
 
 #TRAJETÓRIA DA INFLAÇÃO
 df %>% 
-  filter(YEAR > 1950, YEAR < 1965) %>% 
+  filter(YEAR < 1970) %>% 
   ggplot(aes(x = factor(YEAR), group = 1)) +
     geom_line(aes(y = inflacao,)) +
     geom_point(aes(y = inflacao,)) +
@@ -26,8 +26,16 @@ df %>%
     geom_line() +
     labs(x = "Ano", y = "Inflação (% a.a.)")
 
-ggsave("graficos/inflacao.png", width = 9, height = 5, dpi = 600)
+#TRAJETÓRIA DA PIB INDUSTRIAL
+df %>% 
+  filter(YEAR < 1965) %>% 
+  ggplot(aes(x = factor(YEAR), y = pib_industria / pib, group = 1)) +
+  geom_line() +
+  geom_point() + 
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Ano", y = "Participação da indústria no PIB")
 
+ggsave("graficos/industria.png", width = 9, height = 5, dpi = 600)
 
 #TRAJETÓRIA DA BALANÇA COMERCIAL
 df %>% 
