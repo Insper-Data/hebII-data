@@ -1,7 +1,7 @@
 library(tidyverse)
 library(ggeasy)
 
-df <- read_csv("data.csv")
+df <- read_csv("data/data.csv")
 
 #TRAJETÓRIA DA INFLAÇÃO
 df %>% 
@@ -36,6 +36,17 @@ df %>%
   labs(x = "Ano", y = "Participação da indústria no PIB")
 
 ggsave("graficos/industria.png", width = 9, height = 5, dpi = 600)
+
+#TRAJETÓRIA DO SALÁRIO
+df %>% 
+  filter(YEAR > 1950, YEAR < 1970) %>% 
+  ggplot(aes(x = factor(YEAR), y = salario, group = 1)) +
+    geom_line() +
+    geom_point() + 
+    labs(x = "Ano", y = "Salário mínimo real (R$ do último mês) ")
+
+
+ggsave("graficos/salario_minimo.png", width = 9, height = 5, dpi = 600)
 
 #TRAJETÓRIA DA BALANÇA COMERCIAL
 df %>% 
