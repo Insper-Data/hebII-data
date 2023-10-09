@@ -28,7 +28,7 @@ df %>%
 
 #TRAJETÓRIA DA PIB INDUSTRIAL
 df %>% 
-  filter(YEAR < 1965) %>% 
+  filter(YEAR > 1950, YEAR < 1965) %>% 
   ggplot(aes(x = factor(YEAR), y = pib_industria / pib, group = 1)) +
   geom_line() +
   geom_point() + 
@@ -93,15 +93,25 @@ ggsave("graficos/divida.png", width = 9, height = 5, dpi = 600)
 
 #BASE MONETÁRIA
 df %>% 
-  mutate(base_monetaria = base_monetaria) %>% 
-  ggplot(aes(x = YEAR, y = log(base_monetaria))) +
-    geom_line() +
-    geom_point() +
-    xlim(c(1970, 1985)) +
-    ylim(c(-20, -10)) +
-    labs(
-      x = "Ano", 
-      y = "Log da Base monetária (R$)"
-    ) 
+  filter(YEAR > 1950, YEAR < 2000) %>% 
+  ggplot(aes(x = YEAR, y = (base_monetaria_m3/pib_nominal_brl))) +
+  geom_line() +
+  geom_point() +
+  labs(
+    x = "Ano", 
+    y = "Base monetária (M3) / PIB nominal"
+  ) 
+ggsave("graficos/base_monetaria_m3.png", width = 9, height = 5, dpi = 600)
 
-ggsave("graficos/base_monetaria.png", width = 9, height = 5, dpi = 600)
+df %>% 
+  filter(YEAR > 1950, YEAR < 2000) %>% 
+  ggplot(aes(x = YEAR, y = (base_monetaria_m3/pib_nominal_brl)/(lag(base_monetaria_m3)/lag(pib_nominal_brl))-1)) +
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(
+    x = "Ano", 
+    y = "Variação da razão Base monetária (M3) / PIB nominal"
+  ) 
+
+ggsave("graficos/base_monetaria_m3_variacao.png", width = 9, height = 5, dpi = 600)
